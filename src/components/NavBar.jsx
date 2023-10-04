@@ -18,7 +18,7 @@ const NavBar = () => {
     return (
         <nav className="nav-bar flex items-center justify-between px-10 py-4 font-NotoSansKR font-semibold text-white">
             <h1 className="text-3xl">
-                <span className="text-react">React</span> <span className="text-firebase">Firebase</span> Chat App</h1>
+                <span className="text-react">리액트</span> <span className="text-firebase">파이어베이스</span> 채팅</h1>
             {user ? (
                 <button onClick={signOut} className="sign-out font-bold px-8 py-4 text-xl bg-transparent" type="button">
                     Sign Out
