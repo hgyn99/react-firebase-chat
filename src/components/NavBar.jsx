@@ -1,41 +1,48 @@
 import React, { useState } from "react";
 import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth"; import GoogleSignin from "../assets/btn_google_signin.png";
+import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
+import GoogleSignin from "../assets/btn_google_signin.png";
 
 const NavBar = () => {
-    const [user] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
-    const googleSignIn = () => {
-        const provider = new GoogleAuthProvider();
-        signInWithRedirect(auth, provider);
-    };
+  const googleSignIn = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithRedirect(auth, provider);
+  };
 
-    const signOut = () => {
-        auth.signOut();
-    };
+  const signOut = () => {
+    auth.signOut();
+  };
 
-    return (
-        <nav className="nav-bar flex items-center justify-between px-10 py-4 font-NotoSansKR font-semibold text-white">
-            <h1 className="text-3xl">
-                <span className="text-react">리액트</span> <span className="text-firebase">파이어베이스</span> 채팅</h1>
-            {user ? (
-                <button onClick={signOut} className="sign-out font-bold px-8 py-4 text-xl bg-transparent" type="button">
-                    Sign Out
-                </button>
-            ) : (
-                <button className="sign-in border-none bg-transparent p-0">
-                    <img
-                        className="w-16 h-auto"
-                        onClick={googleSignIn}
-                        src={GoogleSignin}
-                        alt="sign in with google"
-                        type="button"
-                    />
-                </button>
-            )}
-        </nav>
-    );
+  return (
+    <nav className="nav-bar flex items-center justify-between px-10 py-4 font-NotoSansKR font-semibold text-white">
+      <h1 className="text-3xl">
+        <span className="text-react">리액트</span>{" "}
+        <span className="text-firebase">파이어베이스</span> 채팅
+      </h1>
+      {user ? (
+        <button
+          onClick={signOut}
+          className="sign-out font-bold px-8 py-4 text-xl bg-transparent"
+          type="button"
+        >
+          Sign Out
+        </button>
+      ) : (
+        <button className="sign-in border-none bg-transparent p-0">
+          <img
+            className="w-16 h-auto"
+            onClick={googleSignIn}
+            src={GoogleSignin}
+            alt="sign in with google"
+            type="button"
+          />
+        </button>
+      )}
+    </nav>
+  );
 };
 
 export default NavBar;
